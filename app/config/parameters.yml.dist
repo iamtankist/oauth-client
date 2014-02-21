@@ -1,0 +1,21 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    oauth2_client_id:       3_24slxofityxw0w4o8gsg4ssg0kow4wc8gwccg8ccosg4w0wwgc
+    oauth2_client_secret:   2wxfg6tpcuwws8444ksgck8804sg88wowc80s8ww8owc00ckcg
+    oauth2_redirect_url:    http://oauth-client.local/authorize
+    oauth2_auth_endpoint:   http://oauth-server.local/oauth/v2/auth
+    oauth2_token_endpoint:  http://oauth-server.local/oauth/v2/token

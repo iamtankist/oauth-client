@@ -1,0 +1,3 @@
+auth:
+    resource: "@StarkIndustriesClientBundle/Controller/AuthController.php"
+    type:     annotation

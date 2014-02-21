@@ -1,0 +1,3 @@
+stark_industries_client:
+    resource: "@StarkIndustriesClientBundle/Resources/config/routing.yml"
+    prefix:   /

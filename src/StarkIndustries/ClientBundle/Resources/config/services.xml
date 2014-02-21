@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="adoy_oauth2.client.class">OAuth2\Client</parameter>
+        <parameter key="stark_industries_client.client.class">StarkIndustries\ClientBundle\Service\OAuth2Client</parameter>
+    </parameters>
+
+    <services>
+        <service id="adoy_oauth2.client" class="%adoy_oauth2.client.class%">
+            <argument>%oauth2_client_id%</argument>
+            <argument>%oauth2_client_secret%</argument>
+        </service>
+
+        <service id="stark_industries_client.credentials_client" class="%stark_industries_client.client.class%">
+            <argument type="service" id="adoy_oauth2.client" />
+            <argument>%oauth2_auth_endpoint%</argument>
+            <argument>%oauth2_token_endpoint%</argument>
+            <argument>%oauth2_redirect_url%</argument>
+            <argument>client_credentials</argument>
+            <argument type="collection">
+                <argument key="client_id">%oauth2_client_id%</argument>
+                <argument key="client_secret">%oauth2_client_secret%</argument>
+            </argument>
+        </service>
+
+        <service id="stark_industries_client.authorize_client" class="%stark_industries_client.client.class%">
+            <argument type="service" id="adoy_oauth2.client" />
+            <argument>%oauth2_auth_endpoint%</argument>
+            <argument>%oauth2_token_endpoint%</argument>
+            <argument>%oauth2_redirect_url%</argument>
+            <argument>authorization_code</argument>
+            <argument type="collection">
+                <argument key="redirect_uri">%oauth2_redirect_url%</argument>
+            </argument>
+        </service>
+    </services>
+</container>
